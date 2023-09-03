@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import ContactAdder from "./Components/ContactAdder";
+import Contact from "./Components/Contact";
 
 function App() {
+  const [showBox, setShowBox] = useState(false);
+
+  const getContactList = JSON.parse(localStorage.getItem("Contacts"));
+  const [contactList, setContactList] = useState(
+    getContactList ? getContactList : []
+  );
+  const addContactData = (contactInfo) => {
+    let allContacts = [...contactList, contactInfo];
+    setContactList(allContacts);
+    localStorage.setItem("Contacts", JSON.stringify(allContacts));
+  };
+  const removeContactList = () => {
+    setContactList([]);
+    localStorage.clear();
+  };
+
+  const openContactAdder = () => {
+    setShowBox(true);
+  };
+
+  const closeContactAdder = () => {
+    setShowBox(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ContactAdder
+        showBox={showBox}
+        onSubmit={closeContactAdder}
+        onContactAdded={addContactData}
+      ></ContactAdder>
+
+      <h1 style={{ margin: "0px" }}>Contact List:</h1>
+      <br></br>
+      {contactList.map((data) => (
+        <Contact data={data}></Contact>
+      ))}
+      <button onClick={openContactAdder} style={{ marginRight: "5px" }}>
+        Add Contact
+      </button>
+      <button onClick={removeContactList} style={{ background: "#ac0d0d" }}>
+        Clear List
+      </button>
+    </>
   );
 }
 

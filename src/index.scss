@@ -1,0 +1,44 @@
+body {
+  background: #51037b;
+  color: #ffffff;
+}
+
+input {
+  padding: 5px;
+  outline: none;
+  border: 0px;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  outline: none;
+  border: 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #086308;
+  color: #ffffff;
+}
+
+.contactAdderBox {
+  font-size: larger;
+  background: #300149;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 30%;
+  padding: 2%;
+  border-radius: 10px;
+  margin-left: 32.5%;
+  margin-top: 8%;
+  position: absolute;
+}
+
+.contact {
+  color: black;
+  background: #ffffff;
+  font-size: larger;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+}
