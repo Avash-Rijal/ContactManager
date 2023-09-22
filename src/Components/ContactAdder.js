@@ -6,6 +6,16 @@ const ContactAdder = (props) => {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
+  /*
+  const [userInputs,setUserinputs]=useState({fname:"",Lname:"",idofallinputfeilds similarly})
+const handleinputs=(e)=>{
+feildId=e.target.id
+feildvalue=e.target.value
+setUserinputs({...userInputs,{feildid:value})
+
+}
+  
+  */
 
   const handleSubmit = (e) => {
     e.preventDefault();
